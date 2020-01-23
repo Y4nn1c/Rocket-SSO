@@ -1,10 +1,13 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-    <h1>HELLO WORLD!</h1>
-    <h2>No Dist</h2>
-    <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
+    <center> 
+      <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin> 
+      <li v-for="obj in result">
+        {{obj}}
+      </li>
+      <GoogleLogin :params="params" :logoutButton=true>Logout</GoogleLogin>
+    </center>  
   </div>
 </template>
 
@@ -28,13 +31,17 @@ export default {
         width: 250,
         height: 50,
         longtitle: true
-      }
+      },
+      result: []
     }
   },
   methods: {
     onSuccess(param){
       window.console.log("====SUCCESS====", param);
       window.console.log("====USER PROFILE====\n", param.getBasicProfile());
+      for (let attr in param.getBasicProfile()) {
+        this.result.push(param.getBasicProfile()[attr]);
+      }
     },
     onFailure(param){
       window.console.log("====FALURE====", param);
