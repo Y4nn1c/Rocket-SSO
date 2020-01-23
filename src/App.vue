@@ -4,7 +4,7 @@
     <center> 
       <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin> 
       <br />
-      <li v-for="(key, val) in result">
+      <li v-for="(key, val) in result" v-bind:key="key">
         {{ key }} - {{ val }}
       </li>
       <br />
@@ -14,12 +14,11 @@
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+//import HelloWorld from "./components/HelloWorld.vue";
 import { GoogleLogin } from "vue-google-login";
 export default {
   name: "app",
   components: {
-    HelloWorld,
     GoogleLogin
   },
   data(){
