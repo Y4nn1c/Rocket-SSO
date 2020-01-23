@@ -42,9 +42,9 @@ export default {
     onSuccess(param){
       window.console.log("====SUCCESS====\n", param);
       window.console.log("====USER PROFILE====\n", param.getBasicProfile());
-      let profile = param.getBasicProfile()
+      let profile = param.getBasicProfile();
       for (let attr in profile) {
-        this.result.push( {key: profile, val: profile[attr]});
+        this.result.push( {key: attr, val: profile[attr]});
       }
       window.console.log("=====RESULT=====\n", this.result);
     },
