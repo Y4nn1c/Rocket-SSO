@@ -47,6 +47,7 @@ export default {
       for (let attr in profile) {
         this.result.push( {key: profile, val: profile[attr]});
       }
+      window.console.log("=====RESULT=====\n", this.result);
     },
     onFailure(param){
       window.console.log("====FALURE====\n", param);
