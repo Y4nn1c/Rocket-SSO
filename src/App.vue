@@ -4,8 +4,8 @@
     <center> 
       <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin> 
       <br />
-      <li v-for="obj in result">
-        {{ obj.key }}
+      <li v-for="(key, val) in result">
+        {{ key }} - {{ val }}
       </li>
       <br />
       <GoogleLogin :params="params" :logoutButton=true>Logout</GoogleLogin>
