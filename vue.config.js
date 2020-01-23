@@ -7,7 +7,7 @@ module.exports = {
     }
   },
   devServer: {
-    https: false
+    https: true
   },
   publicPath: process.env.NODE_ENV === "production" ? "/Rocket-SSO/" : "/"
   // Using only for dev "Access-Control-Allow-Origin"
