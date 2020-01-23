@@ -5,7 +5,7 @@
       <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin> 
       <br />
       <li v-for="attr in result" v-bind:key="attr">
-        {{ attr.key }} - {{ attr.value }}
+        {{ attr.key }} - {{ attr.val }}
       </li>
       <br />
       <GoogleLogin :params="params" :logoutButton="true">Logout</GoogleLogin>
