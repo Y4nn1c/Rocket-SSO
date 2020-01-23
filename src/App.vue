@@ -45,7 +45,9 @@ export default {
   methods: {
     onSuccess(googleUser) {
       window.console.log("====SUCCESS====\n", googleUser);
-      window.console.log("====USER PROFILE====\n" + googleUser.getBasicProfile());
+      window.console.log(
+        "====USER PROFILE====\n" + googleUser.getBasicProfile()
+      );
       let profile = googleUser.getBasicProfile();
       for (let attr in profile) {
         if (typeof profile[attr] !== "function")
