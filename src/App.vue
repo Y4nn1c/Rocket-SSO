@@ -21,7 +21,7 @@
 <script>
 //import HelloWorld from "./components/HelloWorld.vue";
 import { GoogleLogin } from "vue-google-login";
-import { CLIENT_ID } from "../tokens";
+import { CLIENT_ID } from "../tokens.js";
 export default {
   name: "app",
   components: {
