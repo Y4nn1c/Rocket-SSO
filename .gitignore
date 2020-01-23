@@ -1,9 +1,8 @@
 .DS_Store
 node_modules
-/dist
-dist/*
 dist
 Rocket-SSO.code-workspace
+tokens.js
 # local env files
 .env.local
 .env.*.local

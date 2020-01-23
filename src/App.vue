@@ -21,6 +21,7 @@
 <script>
 //import HelloWorld from "./components/HelloWorld.vue";
 import { GoogleLogin } from "vue-google-login";
+import { CLIENT_ID } from "../tokens";
 export default {
   name: "app",
   components: {
@@ -30,8 +31,7 @@ export default {
     return {
       // client_id is the only required property but you can add several more params, full list down bellow on the Auth api section
       params: {
-        client_id:
-          "884184644232-3nu1245erhln6pmc0mfep4n6o9dmh0vh.apps.googleusercontent.com"
+        client_id: CLIENT_ID
       },
       // only needed if you want to render the button with the google ui
       renderParams: {
