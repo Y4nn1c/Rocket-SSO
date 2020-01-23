@@ -3,6 +3,7 @@ node_modules
 /dist
 dist/*
 dist
+tokens.js
 Rocket-SSO.code-workspace
 # local env files
 .env.local
