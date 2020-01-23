@@ -34,7 +34,7 @@ export default {
   methods: {
     onSuccess(param){
       window.console.log("====SUCCESS====", param);
-      window.console.log("====USER PROFILE====", param.getBasicUserProfile());
+      window.console.log("====USER PROFILE====\n", param.getBasicProfile());
     },
     onFailure(param){
       window.console.log("====FALURE====", param);
