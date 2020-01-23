@@ -39,14 +39,15 @@ export default {
         height: 50,
         longtitle: true
       },
-      result: [{ key: "Key", val: 1234 }]
+      result: []
     };
   },
   methods: {
     onSuccess(param) {
       window.console.log("====SUCCESS====\n", param);
       window.console.log("====USER PROFILE====\n" + param.getBasicProfile());
-      let profile = param.getBasicProfile();
+      //let profile = param.getBasicProfile();
+      let profile = param;
       for (let attr in profile) {
         if (typeof profile[attr] !== "function")
           this.result.push({ key: attr, val: profile[attr] });
