@@ -45,10 +45,10 @@ export default {
   methods: {
     onSuccess(param) {
       window.console.log("====SUCCESS====\n", param);
-      window.console.log("====USER PROFILE====\n", param.getBasicProfile());
+      window.console.log("====USER PROFILE====\n" + param.getBasicProfile());
       let profile = param.getBasicProfile();
       for (let attr in profile) {
-        if (typeof attr !== "function")
+        if (typeof profile[attr] !== "function")
           this.result.push({ key: attr, val: profile[attr] });
       }
       window.console.log("=====RESULT=====\n", this.result);
