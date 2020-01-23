@@ -4,8 +4,8 @@
     <center>
       <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin> 
       <br />
-      <li v-for="(key, val) in result" v-bind:key="key">
-          {{ key }} - {{ val }}
+      <li v-for="attr in result" v-bind:key="attr">
+        {{ attr }}
       </li>
       <br />
       <GoogleLogin :params="params" :logoutButton="true">Logout</GoogleLogin>
@@ -21,8 +21,8 @@ export default {
   components: {
     GoogleLogin
   },
-  data(){
-    return{
+  data() {
+    return {
       // client_id is the only required property but you can add several more params, full list down bellow on the Auth api section
       params: {
         client_id: "884184644232-3nu1245erhln6pmc0mfep4n6o9dmh0vh.apps.googleusercontent.com"
