@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <center> 
+    <center>
       <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin> 
       <br />
       <li v-for="(key, val) in result" v-bind:key="key">
-          { key } - {{ val }}
+          {{ key }} - {{ val }}
       </li>
       <br />
-      <GoogleLogin :params="params" :logoutButton=true>Logout</GoogleLogin>
-    </center>  
+      <GoogleLogin :params="params" :logoutButton="true">Logout</GoogleLogin>
+    </center>
   </div>
 </template>
 
@@ -34,12 +34,12 @@ export default {
         longtitle: true
       },
       result: [
-        { key: "Key", val: 1234 }
+                { key: "Key", val: 1234 }
       ]
-    }
+    };
   },
   methods: {
-    onSuccess(param){
+    onSuccess(param) {
       window.console.log("====SUCCESS====\n", param);
       window.console.log("====USER PROFILE====\n", param.getBasicProfile());
       let profile = param.getBasicProfile();
@@ -48,7 +48,7 @@ export default {
       }
       window.console.log("=====RESULT=====\n", this.result);
     },
-    onFailure(param){
+    onFailure(param) {
       window.console.log("====FALURE====\n", param);
     }
   }
