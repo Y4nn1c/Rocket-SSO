@@ -43,19 +43,18 @@ export default {
     };
   },
   methods: {
-    onSuccess(param) {
-      window.console.log("====SUCCESS====\n", param);
-      window.console.log("====USER PROFILE====\n" + param.getBasicProfile());
-      //let profile = param.getBasicProfile();
-      let profile = param;
+    onSuccess(googleUser) {
+      window.console.log("====SUCCESS====\n", googleUser);
+      window.console.log("====USER PROFILE====\n" + googleUser.getBasicProfile());
+      let profile = googleUser.getBasicProfile();
       for (let attr in profile) {
         if (typeof profile[attr] !== "function")
           this.result.push({ key: attr, val: profile[attr] });
       }
       window.console.log("=====RESULT=====\n", this.result);
     },
-    onFailure(param) {
-      window.console.log("====FALURE====\n", param);
+    onFailure(googleUser) {
+      window.console.log("====FALURE====\n", googleUser);
     }
   }
 };
