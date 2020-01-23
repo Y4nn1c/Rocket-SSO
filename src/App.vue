@@ -3,9 +3,11 @@
     <img alt="Vue logo" src="./assets/logo.png" />
     <center> 
       <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin> 
+      <br />
       <li v-for="obj in result">
-        {{obj}}
+        {{ obj.key }}
       </li>
+      <br />
       <GoogleLogin :params="params" :logoutButton=true>Logout</GoogleLogin>
     </center>  
   </div>
@@ -32,19 +34,22 @@ export default {
         height: 50,
         longtitle: true
       },
-      result: []
+      result: [
+        { key: "Key", val: 1234 }
+      ]
     }
   },
   methods: {
     onSuccess(param){
-      window.console.log("====SUCCESS====", param);
+      window.console.log("====SUCCESS====\n", param);
       window.console.log("====USER PROFILE====\n", param.getBasicProfile());
-      for (let attr in param.getBasicProfile()) {
-        this.result.push(param.getBasicProfile()[attr]);
+      let profile = param.getBasicProfile()
+      for (let attr in profile) {
+        this.result.push( {key: profile, val: profile[attr]});
       }
     },
     onFailure(param){
-      window.console.log("====FALURE====", param);
+      window.console.log("====FALURE====\n", param);
     }
   }
 };
