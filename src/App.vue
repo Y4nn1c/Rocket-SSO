@@ -2,6 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <center>
+      <h2> Look into the Debug Console.</h2>
       <GoogleLogin
         :params="params"
         :renderParams="renderParams"
@@ -62,7 +63,7 @@ export default {
       
       /*   Basic Output DEBUG   */
       for (let attr in profile) {
-        if (typeof profile[attr] === "function")
+        if (typeof profile[attr] !== "function")
           this.result.push({ key: attr, val: profile[attr] });
       }
       window.console.log("=====RESULT=====\n", this.result);
