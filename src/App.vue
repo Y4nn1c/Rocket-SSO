@@ -2,7 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <center>
-      <h2> Look into the Debug Console.</h2>
+      <h2>Look into the Debug Console.</h2>
       <GoogleLogin
         :params="params"
         :renderParams="renderParams"
@@ -14,18 +14,52 @@
         {{ attr.key }} - {{ attr.val }}
       </li>
       <br />
-      <GoogleLogin :params="params" :logoutButton="true" :onSuccess="loutSucc" :onFailure="loutFail">Logout</GoogleLogin>
+      <GoogleLogin
+        :params="params"
+        :logoutButton="true"
+        :onSuccess="loutSucc"
+        :onFailure="loutFail"
+        >Logout</GoogleLogin
+      >
       <hr />
       <LoaderPlugin></LoaderPlugin>
+      <div id="my-signin2"></div>
+      <script>
+        function onSuccess(googleUser) {
+          console.log(
+            "Logged in as: " + googleUser.getBasicProfile().getName()
+          );
+        }
+        function onFailure(error) {
+          console.log(error);
+        }
+        function renderButton() {
+          gapi.signin2.render("my-signin2", {
+            scope: "profile email",
+            width: 240,
+            height: 50,
+            longtitle: true,
+            theme: "dark",
+            onsuccess: onSuccess,
+            onfailure: onFailure
+          });
+        }
+      </script>
+
+      <script
+        src="https://apis.google.com/js/platform.js?onload=renderButton"
+        async
+        defer
+      ></script>
     </center>
-    
   </div>
 </template>
 
 <script>
 //import HelloWorld from "./components/HelloWorld.vue";
 import { GoogleLogin, LoaderPlugin } from "vue-google-login";
-const CLIENT_ID = "884184644232-3nu1245erhln6pmc0mfep4n6o9dmh0vh.apps.googleusercontent.com";//require("../tokens.js");
+const CLIENT_ID =
+  "884184644232-3nu1245erhln6pmc0mfep4n6o9dmh0vh.apps.googleusercontent.com"; //require("../tokens.js");
 export default {
   name: "app",
   components: {
@@ -50,26 +84,27 @@ export default {
   methods: {
     onSuccess(googleUser) {
       window.console.log("====SUCCESS====\n", googleUser);
-      
+
       this.GoogleAuth.then(auth2 => {
         window.console.log(auth2.isSignedIn.get());
-      })
+      });
       window.console.log(
-        "====USER PROFILE====\n",googleUser.getBasicProfile()
+        "====USER PROFILE====\n",
+        googleUser.getBasicProfile()
       );
       let profile = googleUser.getBasicProfile();
       /*    Basic Output DEBUG   */
       window.console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-      window.console.log('Full Name: ' + profile.getName());
-      window.console.log('Given Name: ' + profile.getGivenName());
-      window.console.log('Family Name: ' + profile.getFamilyName());
+      window.console.log("Full Name: " + profile.getName());
+      window.console.log("Given Name: " + profile.getGivenName());
+      window.console.log("Family Name: " + profile.getFamilyName());
       window.console.log("Image URL: " + profile.getImageUrl());
       window.console.log("Email: " + profile.getEmail());
       let id_token = googleUser.getAuthResponse().id_token;
       window.console.log("ID Token: " + id_token);
       window.console.log("Auth Response: ", googleUser.getAuthResponse());
       //window.console.log("Auth Instance: " , googleUser.getAuthInstance());
-      //window.console.log("Auth Code: " , googleUser.getAuthInstance().getAuthCode());      
+      //window.console.log("Auth Code: " , googleUser.getAuthInstance().getAuthCode());
       /*   Basic Output DEBUG   */
       for (let attr in profile) {
         if (typeof profile[attr] !== "function")
@@ -80,10 +115,10 @@ export default {
     onFailure(googleUser) {
       window.console.log("====FALURE====\n", googleUser);
     },
-    loutSucc(param){
+    loutSucc(param) {
       window.console.log("===LOGOUT SUCCESFUL===\n", param);
     },
-    loutFail(param){
+    loutFail(param) {
       window.console.log("===LOGOUT FAILED===\n", param);
     }
   }
