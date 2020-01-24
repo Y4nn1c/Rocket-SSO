@@ -60,8 +60,9 @@ export default {
       window.console.log("Email: " + profile.getEmail());
       let id_token = googleUser.getAuthResponse().id_token;
       window.console.log("ID Token: " + id_token);
-      window.console.log("Auth Instance: " , googleUser.getAuthInstance());
-      window.console.log("Auth Code: " , googleUser.getAuthInstance().getAuthCode());      
+      window.console.log("Auth Response: ", googleUser.getAuthResponse());
+      //window.console.log("Auth Instance: " , googleUser.getAuthInstance());
+      //window.console.log("Auth Code: " , googleUser.getAuthInstance().getAuthCode());      
       /*   Basic Output DEBUG   */
       for (let attr in profile) {
         if (typeof profile[attr] !== "function")
