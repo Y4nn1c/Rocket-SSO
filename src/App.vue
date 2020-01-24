@@ -23,7 +23,7 @@
       >
       <hr />
       <g-signin-button class="g-signin-button"
-    :params="params.client_id"
+    :params="params"
     @success="onSuccess"
     @error="onFailure">
     Sign in with Google
