@@ -14,7 +14,7 @@
         {{ attr.key }} - {{ attr.val }}
       </li>
       <br />
-      <GoogleLogin :params="params" :logoutButton="true">Logout</GoogleLogin>
+      <GoogleLogin :params="params" :logoutButton="true" :onSuccess="loutSucc" :onFailure="loutFail">Logout</GoogleLogin>
     </center>
     
   </div>
@@ -72,6 +72,12 @@ export default {
     },
     onFailure(googleUser) {
       window.console.log("====FALURE====\n", googleUser);
+    },
+    loutSucc(param){
+      window.console.log("===LOGOUT SUCCESFUL===\n", param);
+    },
+    loutFail(param){
+      window.console.log("===LOGOUT FAILED===\n", param);
     }
   }
 };
