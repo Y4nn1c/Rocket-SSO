@@ -47,7 +47,7 @@ export default {
     onSuccess(googleUser) {
       window.console.log("====SUCCESS====\n", googleUser);
       window.console.log(
-        "====USER PROFILE====\n" + googleUser.getBasicProfile()
+        "====USER PROFILE====\n",googleUser.getBasicProfile()
       );
       let profile = googleUser.getBasicProfile();
       /*    Basic Output DEBUG   */
@@ -59,9 +59,10 @@ export default {
       console.log("Email: " + profile.getEmail());
       let id_token = googleUser.getAuthResponse().id_token;
       console.log("ID Token: " + id_token);
+      
       /*   Basic Output DEBUG   */
       for (let attr in profile) {
-        if (typeof profile[attr] !== "function")
+        if (typeof profile[attr] === "function")
           this.result.push({ key: attr, val: profile[attr] });
       }
       window.console.log("=====RESULT=====\n", this.result);
