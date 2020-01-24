@@ -38,7 +38,7 @@
 //import HelloWorld from "./components/HelloWorld.vue";
 import { GoogleLogin, LoaderPlugin } from "vue-google-login";
 import { SignIn } from "./components/SignIn";
-import GSignInButton from 'vue-google-signin-button'
+import GSignInButton from "vue-google-signin-button";
 window.Vue.use(GSignInButton);
 const CLIENT_ID =
   "884184644232-3nu1245erhln6pmc0mfep4n6o9dmh0vh.apps.googleusercontent.com"; //require("../tokens.js");
