@@ -22,8 +22,7 @@
         >Logout</GoogleLogin
       >
       <hr />
-      <Testcomp></Testcomp>
-      <g-signin-sbutton class="g-signin-button"
+      <g-signin-button class="g-signin-button"
     :params="params.client_id"
     @success="onSuccess"
     @error="onFailure">
