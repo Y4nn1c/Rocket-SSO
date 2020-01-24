@@ -15,13 +15,14 @@
       <br />
       <GoogleLogin :params="params" :logoutButton="true">Logout</GoogleLogin>
     </center>
+    
   </div>
 </template>
 
 <script>
 //import HelloWorld from "./components/HelloWorld.vue";
 import { GoogleLogin } from "vue-google-login";
-const CLIENT_ID = require("../tokens.js");
+const CLIENT_ID = "884184644232-3nu1245erhln6pmc0mfep4n6o9dmh0vh.apps.googleusercontent.com";//require("../tokens.js");
 export default {
   name: "app",
   components: {
@@ -49,6 +50,16 @@ export default {
         "====USER PROFILE====\n" + googleUser.getBasicProfile()
       );
       let profile = googleUser.getBasicProfile();
+      /*    Basic Output DEBUG   */
+      console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+      console.log('Full Name: ' + profile.getName());
+      console.log('Given Name: ' + profile.getGivenName());
+      console.log('Family Name: ' + profile.getFamilyName());
+      console.log("Image URL: " + profile.getImageUrl());
+      console.log("Email: " + profile.getEmail());
+      let id_token = googleUser.getAuthResponse().id_token;
+      console.log("ID Token: " + id_token);
+      /*   Basic Output DEBUG   */
       for (let attr in profile) {
         if (typeof profile[attr] !== "function")
           this.result.push({ key: attr, val: profile[attr] });
