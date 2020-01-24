@@ -14,7 +14,7 @@
         {{ attr.key }} - {{ attr.val }}
       </li>
       <br />
-      <GoogleLogin :params="params" :logoutButton=true>Logout</GoogleLogin>
+      <GoogleLogin :params="params" :logoutButton="true">Logout</GoogleLogin>
     </center>
     
   </div>
