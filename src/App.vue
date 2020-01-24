@@ -22,12 +22,12 @@
         >Logout</GoogleLogin
       >
       <hr />
-      <g-signin-button
+      <GSignInButton
     :params="params"
     @success="onSuccess"
     @error="onFailure">
     Sign in with Google
-  </g-signin-button>
+  </GSignInButton>
       <LoaderPlugin></LoaderPlugin>
       <SignIn></SignIn>
     </center>
