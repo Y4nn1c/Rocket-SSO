@@ -26,12 +26,6 @@
 //import HelloWorld from "./components/HelloWorld.vue";
 import { GoogleLogin, LoaderPlugin } from "vue-google-login";
 const CLIENT_ID = "884184644232-3nu1245erhln6pmc0mfep4n6o9dmh0vh.apps.googleusercontent.com";//require("../tokens.js");
-this.use(LoaderPlugin, {
-        client_id: CLIENT_ID
-    });
-    this.GoogleAuth.then(auth2 => {
-        window.console.log(auth2.isSignedIn.get());
-    })
 export default {
   name: "app",
   components: {
@@ -56,6 +50,10 @@ export default {
   methods: {
     onSuccess(googleUser) {
       window.console.log("====SUCCESS====\n", googleUser);
+      
+      this.GoogleAuth.then(auth2 => {
+        window.console.log(auth2.isSignedIn.get());
+      })
       window.console.log(
         "====USER PROFILE====\n",googleUser.getBasicProfile()
       );
