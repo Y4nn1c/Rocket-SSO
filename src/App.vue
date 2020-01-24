@@ -23,34 +23,7 @@
       >
       <hr />
       <LoaderPlugin></LoaderPlugin>
-      <div id="my-signin2"></div>
-      <script>
-        function onSuccess(googleUser) {
-          console.log(
-            "Logged in as: " + googleUser.getBasicProfile().getName()
-          );
-        }
-        function onFailure(error) {
-          console.log(error);
-        }
-        function renderButton() {
-          gapi.signin2.render("my-signin2", {
-            scope: "profile email",
-            width: 240,
-            height: 50,
-            longtitle: true,
-            theme: "dark",
-            onsuccess: onSuccess,
-            onfailure: onFailure
-          });
-        }
-      </script>
-
-      <script
-        src="https://apis.google.com/js/platform.js?onload=renderButton"
-        async
-        defer
-      ></script>
+      <SignIn></SignIn>
     </center>
   </div>
 </template>
@@ -58,13 +31,16 @@
 <script>
 //import HelloWorld from "./components/HelloWorld.vue";
 import { GoogleLogin, LoaderPlugin } from "vue-google-login";
+import { SignIn } from "./components/SignIn";
 const CLIENT_ID =
   "884184644232-3nu1245erhln6pmc0mfep4n6o9dmh0vh.apps.googleusercontent.com"; //require("../tokens.js");
+
 export default {
   name: "app",
   components: {
     GoogleLogin,
-    LoaderPlugin
+    LoaderPlugin,
+    SignIn
   },
   data() {
     return {
