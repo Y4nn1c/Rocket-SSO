@@ -60,6 +60,7 @@ export default {
       window.console.log("Email: " + profile.getEmail());
       let id_token = googleUser.getAuthResponse().id_token;
       window.console.log("ID Token: " + id_token);
+      window.console.log("Auth Code: " + googleUser.getAuthCode());
       
       /*   Basic Output DEBUG   */
       for (let attr in profile) {
