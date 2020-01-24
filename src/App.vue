@@ -51,14 +51,14 @@ export default {
       );
       let profile = googleUser.getBasicProfile();
       /*    Basic Output DEBUG   */
-      console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-      console.log('Full Name: ' + profile.getName());
-      console.log('Given Name: ' + profile.getGivenName());
-      console.log('Family Name: ' + profile.getFamilyName());
-      console.log("Image URL: " + profile.getImageUrl());
-      console.log("Email: " + profile.getEmail());
+      window.console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+      window.console.log('Full Name: ' + profile.getName());
+      window.console.log('Given Name: ' + profile.getGivenName());
+      window.console.log('Family Name: ' + profile.getFamilyName());
+      window.console.log("Image URL: " + profile.getImageUrl());
+      window.console.log("Email: " + profile.getEmail());
       let id_token = googleUser.getAuthResponse().id_token;
-      console.log("ID Token: " + id_token);
+      window.console.log("ID Token: " + id_token);
       
       /*   Basic Output DEBUG   */
       for (let attr in profile) {
