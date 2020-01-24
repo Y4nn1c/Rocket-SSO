@@ -70,9 +70,9 @@ export default {
     onSuccess(googleUser) {
       window.console.log("====SUCCESS====\n", googleUser);
 
-      this.GoogleAuth.then(auth2 => {
+      /*window.GoogleAuth.then(auth2 => {
         window.console.log(auth2.isSignedIn.get());
-      });
+      });*/
       window.console.log(
         "====USER PROFILE====\n",
         googleUser.getBasicProfile()
