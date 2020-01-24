@@ -22,7 +22,8 @@
         >Logout</GoogleLogin
       >
       <hr />
-      <g-signin-button class="g-signin-button"
+      <Testcomp></Testcomp>
+      <g-signin-sbutton class="g-signin-button"
     :params="params.client_id"
     @success="onSuccess"
     @error="onFailure">
@@ -35,10 +36,11 @@
 </template>
 
 <script>
+//import "https://apis.google.com/js/api:client.js";
 //import HelloWorld from "./components/HelloWorld.vue";
 import { GoogleLogin, LoaderPlugin } from "vue-google-login";
 import { SignIn } from "./components/SignIn";
-//import GSignInButton from "vue-google-signin-button";
+import  {GSignInButton } from "vue-google-signin-button";
 const CLIENT_ID =
   "884184644232-3nu1245erhln6pmc0mfep4n6o9dmh0vh.apps.googleusercontent.com"; //require("../tokens.js");
 
@@ -47,7 +49,8 @@ export default {
   components: {
     GoogleLogin,
     LoaderPlugin,
-    SignIn
+    SignIn,
+     
   },
   data() {
     return {
