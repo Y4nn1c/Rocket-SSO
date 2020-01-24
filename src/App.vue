@@ -15,6 +15,8 @@
       </li>
       <br />
       <GoogleLogin :params="params" :logoutButton="true" :onSuccess="loutSucc" :onFailure="loutFail">Logout</GoogleLogin>
+      <hr />
+      <LoaderPlugin></LoaderPlugin>
     </center>
     
   </div>
@@ -22,12 +24,13 @@
 
 <script>
 //import HelloWorld from "./components/HelloWorld.vue";
-import { GoogleLogin } from "vue-google-login";
+import { GoogleLogin, LoaderPlugin } from "vue-google-login";
 const CLIENT_ID = "884184644232-3nu1245erhln6pmc0mfep4n6o9dmh0vh.apps.googleusercontent.com";//require("../tokens.js");
 export default {
   name: "app",
   components: {
-    GoogleLogin
+    GoogleLogin,
+    LoaderPlugin
   },
   data() {
     return {
