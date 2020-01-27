@@ -3,7 +3,7 @@
     <img alt="Vue logo" src="./assets/logo.png" />
     <center>
       <hr />
-      {{ this.rocket_token }}
+      Rocket Session Token: {{ this.rocket_token }}
       <hr />
       <h3>Front End</h3>
       <GoogleLogin
