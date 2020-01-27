@@ -49,6 +49,7 @@
 //import HelloWorld from "./components/HelloWorld.vue";
 import { GoogleLogin, LoaderPlugin } from "vue-google-login";
 import { SignIn } from "./components/SignIn";
+//import axios from 'axios'
 //import  {GSignInButton } from "vue-google-signin-button";
 const CLIENT_ID =
   "884184644232-3nu1245erhln6pmc0mfep4n6o9dmh0vh.apps.googleusercontent.com"; //require("../tokens.js");
@@ -120,10 +121,14 @@ export default {
     },
     validateToken() {
       window.console.log("TOKEN: " + this.id_token);
-      /*   var xhr = new XMLHttpRequest();
-      xhr.open("GET", "https://oauth2.googleapis.com/tokeninfo?idtoken="+this.id_token);
+      var xhr = new XMLHttpRequest();
+      xhr.open(
+        "GET",
+        "https://oauth2.googleapis.com/tokeninfo?idtoken=" + this.id_token
+      );
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       window.console.log("XHR: ", xhr);
+      xhr.send();
       xhr.onload = function() {
         window.console.log("HEADER: ", xhr.getAllResponseHeaders());
         window.console.log("XHR_RESPONSE:", xhr);
@@ -133,30 +138,8 @@ export default {
         window.console.log("Signed in as: " + xhr.responseText);
       };
       //xhr.send("idtoken=" + this.id_token);
-    */
-      var client = new HttpClient();
-      client.get(
-        "https:oauth2.googleapis.com/tokeninfo?idtoken=" + this.id_token,
-        function(response) {
-          // do something with response
-          window.copnsole.log("RESPONSE: ", response);
-        }
-      );
     }
   }
-};
-
-var HttpClient = function() {
-  this.get = function(aUrl, aCallback) {
-    var anHttpRequest = new XMLHttpRequest();
-    anHttpRequest.onreadystatechange = function() {
-      if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-        aCallback(anHttpRequest.responseText);
-    };
-
-    anHttpRequest.open("GET", aUrl, true);
-    anHttpRequest.send(this.id_token);
-  };
 };
 </script>
 
