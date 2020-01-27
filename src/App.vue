@@ -122,18 +122,17 @@ export default {
     validateToken() {
       window.console.log("TOKEN: " + this.id_token);
       var xhr = new XMLHttpRequest();
-      xhr.open(
-        "GET",
-        "https://oauth2.googleapis.com/tokeninfo?id_token="+this.id_token
-      );
+      let url =
+        "https://oauth2.googleapis.com/tokeninfo?id_token=" + this.id_token;
+      xhr.open("GET", url);
       //xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      window.console.log("XHR: ", xhr);
+      //window.console.log("XHR: ", xhr);
       xhr.send();
 
-      xhr.onreadystatechange = (e) => {
-       window.console.log(xhr.responseText);
-       window.console.log(e);
-      }
+      xhr.onreadystatechange = e => {
+        window.console.log(xhr.responseText);
+        window.console.log(e);
+      };
       /*
       xhr.onload = function() {
         window.console.log("HEADER: ", xhr.getAllResponseHeaders());
