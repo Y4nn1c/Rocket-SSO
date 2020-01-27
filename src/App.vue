@@ -119,9 +119,10 @@ export default {
     validateToken() {
       window.console.log("TOKEN: " + this.id_token);
       var xhr = new XMLHttpRequest();
-      xhr.open('POST', 'https://oauth2.googleapis.com/tokeninfo?');
+      xhr.open('GET', 'https://oauth2.googleapis.com/tokeninfo?');
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       xhr.onload = function() {
+        window.console.log("HEADER: ", xhr.getAllResponseHeaders());
         window.console.log("XHR_RESPONSE:",  xhr);
         window.console.log('Signed in as: ' + xhr.responseText);
       };
