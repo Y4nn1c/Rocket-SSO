@@ -129,8 +129,10 @@ export default {
       //window.console.log("XHR: ", xhr);
       xhr.send();
 
-      xhr.onreadystatechange = () => {
+      xhr.onreadystatechange = (e) => {
         window.console.log(xhr.responseText);
+        window.console.log("XHR: ", xhr);
+        window.console.log("e: ", e);
         if(xhr.status == 400)
           this.valid = true;
       };
