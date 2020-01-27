@@ -3,6 +3,7 @@
     <img alt="Vue logo" src="./assets/logo.png" />
     <center>
       <h2>Look into the Debug Console.</h2>
+      <hr />
       <h3>Front End</h3>
       <GoogleLogin
         :params="params"
@@ -11,9 +12,7 @@
         :onFailure="onFailure"
       ></GoogleLogin>
       <br />
-      <ul>
-        Profile information
-      </ul>
+      <h3>Google Profile Information</h3>
       <li v-for="attr in result" v-bind:key="attr">
         {{ attr.key }} - {{ attr.val }}
       </li>
@@ -25,7 +24,7 @@
         :onFailure="loutFail"
         >Logout</GoogleLogin
       >
-      <hr />
+      <br />
       <g-signin-button
         class="g-signin-button"
         :params="params"
@@ -99,11 +98,11 @@ export default {
       this.id_token = id_token;
       window.console.log("Auth Response: ", googleUser.getAuthResponse());
 
-      this.results.push({ key: "ID", val: profile.getId() });
-      this.results.push({ key: "Full Name", val: profile.getName() });
-      this.results.push({ key: "Given Name", val: profile.getGivenName() });
-      this.results.push({ key: "Family name", val: profile.getFamilyName() });
-      this.results.push({ key: "Email", val: profile.getEmail() });
+      this.result.push({ key: "ID", val: profile.getId() });
+      this.result.push({ key: "Full Name", val: profile.getName() });
+      this.result.push({ key: "Given Name", val: profile.getGivenName() });
+      this.result.push({ key: "Family name", val: profile.getFamilyName() });
+      this.result.push({ key: "Email", val: profile.getEmail() });
 
       //window.console.log("Auth Instance: " , googleUser.getAuthInstance());
       //window.console.log("Auth Code: " , googleUser.getAuthInstance().getAuthCode());
