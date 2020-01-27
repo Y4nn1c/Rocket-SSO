@@ -2,8 +2,9 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <center>
-      <h2>Look into the Debug Console.</h2>
       <hr />
+      {{ this.profile }}
+      <hr/>
       <h3>Front End</h3>
       <GoogleLogin
         :params="params"
@@ -75,7 +76,8 @@ export default {
       result: [],
       id_token: 0,
       valid: false,
-      rocket_token: 0
+      rocket_token: 0,
+      profile: null
     };
   },
   methods: {
@@ -98,7 +100,7 @@ export default {
       window.console.log("ID Token: " + id_token);
       this.id_token = id_token;
       window.console.log("Auth Response: ", googleUser.getAuthResponse());
-
+    this.profile = googleUser.getBasicProfile();
       this.result.push({ key: "ID", val: profile.getId() });
       this.result.push({ key: "Full Name", val: profile.getName() });
       this.result.push({ key: "Given Name", val: profile.getGivenName() });
