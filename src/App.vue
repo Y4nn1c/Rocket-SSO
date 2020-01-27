@@ -7,7 +7,6 @@
       <input v-model="id_token" />
       <p>idToken: {{ id_token }}</p>
       <p>valid: {{ valid }}</p>
-      <a href="https://oauth2.googleapis.com/tokeninfo?id_token=" {{id_token}} ><a/>
       <br />
       <button v-on:click="validateToken">Validate</button>
       <hr />
@@ -125,16 +124,16 @@ export default {
       var xhr = new XMLHttpRequest();
       xhr.open(
         "GET",
-        "https://oauth2.googleapis.com/tokeninfo?id_token="+this.id_token
+        "https://oauth2.googleapis.com/tokeninfo?id_token=" + this.id_token
       );
       //xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       window.console.log("XHR: ", xhr);
       xhr.send();
 
-      xhr.onreadystatechange = (e) => {
-       window.console.log(xhr.responseText);
-       window.console.log(e);
-      }
+      xhr.onreadystatechange = e => {
+        window.console.log(xhr.responseText);
+        window.console.log(e);
+      };
       /*
       xhr.onload = function() {
         window.console.log("HEADER: ", xhr.getAllResponseHeaders());
