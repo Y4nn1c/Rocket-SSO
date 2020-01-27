@@ -3,13 +3,6 @@
     <img alt="Vue logo" src="./assets/logo.png" />
     <center>
       <h2>Look into the Debug Console.</h2>
-      <h3>Back End</h3>
-      <input v-model="id_token" />
-      <p>idToken: {{ id_token }}</p>
-      <p>valid: {{ valid }}</p>
-      <br />
-      <button v-on:click="validateToken">Validate</button>
-      <hr />
       <h3>Front End</h3>
       <GoogleLogin
         :params="params"
@@ -18,6 +11,9 @@
         :onFailure="onFailure"
       ></GoogleLogin>
       <br />
+      <ul>
+        Profile information
+      </ul>
       <li v-for="attr in result" v-bind:key="attr">
         {{ attr.key }} - {{ attr.val }}
       </li>
@@ -38,8 +34,14 @@
       >
         Sign in with Google
       </g-signin-button>
-      <LoaderPlugin></LoaderPlugin>
-      <SignIn></SignIn>
+      <hr />
+      <h3>Back End</h3>
+      <input v-model="id_token" />
+      <p>idToken: {{ id_token }}</p>
+      <p>valid: {{ valid }}</p>
+      <br />
+      <button v-on:click="validateToken">Validate</button>
+      <hr />
     </center>
   </div>
 </template>
@@ -47,8 +49,8 @@
 <script>
 //import "https://apis.google.com/js/api:client.js";
 //import HelloWorld from "./components/HelloWorld.vue";
-import { GoogleLogin, LoaderPlugin } from "vue-google-login";
-import { SignIn } from "./components/SignIn";
+import { GoogleLogin } from "vue-google-login";
+//import { SignIn } from "./components/SignIn";
 //import axios from 'axios'
 //import  {GSignInButton } from "vue-google-signin-button";
 const CLIENT_ID =
@@ -57,9 +59,7 @@ const CLIENT_ID =
 export default {
   name: "app",
   components: {
-    GoogleLogin,
-    LoaderPlugin,
-    SignIn
+    GoogleLogin
   },
   data() {
     return {
@@ -82,9 +82,6 @@ export default {
     onSuccess(googleUser) {
       window.console.log("====SUCCESS====\n", googleUser);
 
-      /*window.GoogleAuth.then(auth2 => {
-        window.console.log(auth2.isSignedIn.get());
-      });*/
       window.console.log(
         "====USER PROFILE====\n",
         googleUser.getBasicProfile()
@@ -101,13 +98,20 @@ export default {
       window.console.log("ID Token: " + id_token);
       this.id_token = id_token;
       window.console.log("Auth Response: ", googleUser.getAuthResponse());
+
+      this.results.push({ key: "ID", val: profile.getId() });
+      this.results.push({ key: "Full Name", val: profile.getName() });
+      this.results.push({ key: "Given Name", val: profile.getGivenName() });
+      this.results.push({ key: "Family name", val: profile.getFamilyName() });
+      this.results.push({ key: "Email", val: profile.getEmail() });
+
       //window.console.log("Auth Instance: " , googleUser.getAuthInstance());
       //window.console.log("Auth Code: " , googleUser.getAuthInstance().getAuthCode());
       /*   Basic Output DEBUG   */
-      for (let attr in profile) {
-        if (typeof profile[attr] !== "function")
-          this.result.push({ key: attr, val: profile[attr] });
-      }
+      //for (let attr in profile) {
+      //  if (typeof profile[attr] !== "function")
+      //    this.result.push({ key: attr, val: profile[attr] });
+      //}
       window.console.log("=====RESULT=====\n", this.result);
     },
     onFailure(googleUser) {
@@ -127,22 +131,9 @@ export default {
       xhr.open("GET", url);
       xhr.send();
       xhr.onreadystatechange = () => {
-        //window.console.log(xhr.responseText);
-        //window.console.log("XHR: ", xhr);
-        if(xhr.status == 200)
-          this.valid = true;
+        if (xhr.status == 200) this.valid = true;
+        else this.valid = false;
       };
-      /*
-      xhr.onload = function() {
-        window.console.log("HEADER: ", xhr.getAllResponseHeaders());
-        window.console.log("XHR_RESPONSE:", xhr);
-        if (xhr.status == 400) {
-          this.valid = true;
-        }
-        window.console.log("Signed in as: " + xhr.responseText);
-      };
-      //*/
-      //xhr.send("idtoken=" + this.id_token);
     }
   }
 };
