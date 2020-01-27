@@ -134,6 +134,8 @@ export default {
       xhr.onreadystatechange = () => {
         if (xhr.status == 200) this.valid = true;
         else this.valid = false;
+
+         if (this.valid) this.rocket_token = Math.floor(Math.random() * 2048);
       };
       if (this.valid) this.rocket_token = Math.floor(Math.random() * 2048);
     }
