@@ -125,15 +125,11 @@ export default {
       let url =
         "https://oauth2.googleapis.com/tokeninfo?id_token=" + this.id_token;
       xhr.open("GET", url);
-      //xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      //window.console.log("XHR: ", xhr);
       xhr.send();
-
-      xhr.onreadystatechange = (e) => {
-        window.console.log(xhr.responseText);
-        window.console.log("XHR: ", xhr);
-        window.console.log("e: ", e);
-        if(xhr.status == 400)
+      xhr.onreadystatechange = () => {
+        //window.console.log(xhr.responseText);
+        //window.console.log("XHR: ", xhr);
+        if(xhr.status == 200)
           this.valid = true;
       };
       /*
