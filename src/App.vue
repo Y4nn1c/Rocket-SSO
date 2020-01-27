@@ -3,8 +3,8 @@
     <img alt="Vue logo" src="./assets/logo.png" />
     <center>
       <hr />
-      {{ this.profile }}
-      <hr/>
+      {{ this.rocket_token }}
+      <hr />
       <h3>Front End</h3>
       <GoogleLogin
         :params="params"
@@ -76,8 +76,7 @@ export default {
       result: [],
       id_token: 0,
       valid: false,
-      rocket_token: 0,
-      profile: null
+      rocket_token: 0
     };
   },
   methods: {
@@ -100,7 +99,6 @@ export default {
       window.console.log("ID Token: " + id_token);
       this.id_token = id_token;
       window.console.log("Auth Response: ", googleUser.getAuthResponse());
-    this.profile = googleUser.getBasicProfile();
       this.result.push({ key: "ID", val: profile.getId() });
       this.result.push({ key: "Full Name", val: profile.getName() });
       this.result.push({ key: "Given Name", val: profile.getGivenName() });
@@ -121,6 +119,7 @@ export default {
     },
     loutSucc(param) {
       window.console.log("===LOGOUT SUCCESFUL===\n", param);
+      this.rocket_token = 0;
     },
     loutFail(param) {
       window.console.log("===LOGOUT FAILED===\n", param);
@@ -136,6 +135,7 @@ export default {
         if (xhr.status == 200) this.valid = true;
         else this.valid = false;
       };
+      if (this.valid) this.rocket_token = Math.floor(Math.random() * 2048);
     }
   }
 };
