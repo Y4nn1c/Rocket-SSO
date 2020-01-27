@@ -53,8 +53,8 @@
 
 <script>
 import { GoogleLogin } from "vue-google-login";
-const CLIENT_ID =
-  "884184644232-3nu1245erhln6pmc0mfep4n6o9dmh0vh.apps.googleusercontent.com";
+import { CLIENT_ID } from "../tokens.js"
+//const CLIENT_ID = "884184644232-3nu1245erhln6pmc0mfep4n6o9dmh0vh.apps.googleusercontent.com";
 
 export default {
   name: "app",
