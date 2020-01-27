@@ -120,16 +120,18 @@ export default {
     validateToken() {
       window.console.log("TOKEN: " + this.id_token);
       var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'https://oauth2.googleapis.com/tokeninfo?idtoken=');
-      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.open(
+        "GET",
+        "https://oauth2.googleapis.com/tokeninfo?idtoken=" + this.id_token
+      );
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       xhr.onload = function() {
         window.console.log("HEADER: ", xhr.getAllResponseHeaders());
-        window.console.log("XHR_RESPONSE:",  xhr);
-        if(xhr.status == 400)
-          this.valid = true;
-        window.console.log('Signed in as: ' + xhr.responseText);
+        window.console.log("XHR_RESPONSE:", xhr);
+        if (xhr.status == 400) this.valid = true;
+        window.console.log("Signed in as: " + xhr.responseText);
       };
-      xhr.send('idtoken=' + this.id_token);
+      //xhr.send("idtoken=" + this.id_token);
     }
   }
 };
