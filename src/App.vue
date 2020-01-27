@@ -33,20 +33,18 @@
         :onFailure="loutFail"
         >Logout</GoogleLogin
       >
-      <br /><br />>
+      <br /><br />
 
       <hr />
       <h3>Back End</h3>
       <input v-model="id_token" />
       <p>idToken: {{ id_token }}</p>
       <p>valid: {{ valid }}</p>
-      <button v-on:click="validateToken">Validate</button>
-      <p>
+      <button v-on:click="validateToken">Validate</button> 
         Is the token valid? YES: Is it already in our user DB? Yes: exchange it
         for users respective Rocket Session token. No: Generate a new Rocket
         Session Token for the user and save it. No: Cant login, No valid token.
-      </p>
-      <hr />
+     <hr />
     </center>
   </div>
 </template>
