@@ -132,7 +132,7 @@ export default {
         }
         window.console.log("Signed in as: " + xhr.responseText);
       };
-      xhr.send("idtoken=" + this.id_token);
+      //xhr.send("idtoken=" + this.id_token);
     }
   }
 };
