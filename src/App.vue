@@ -3,6 +3,10 @@
     <img alt="Vue logo" src="./assets/logo.png" />
     <center>
       <h2>Look into the Debug Console.</h2>
+      <input v-model="id_token" />
+      <p>idToken: {{ id_token }}</p>
+      <br />
+      <button v_on:click="validate Token">Validate</button>
       <GoogleLogin
         :params="params"
         :renderParams="renderParams"
@@ -22,12 +26,14 @@
         >Logout</GoogleLogin
       >
       <hr />
-      <g-signin-button class="g-signin-button"
-    :params="params"
-    @success="onSuccess"
-    @error="onFailure">
-    Sign in with Google
-  </g-signin-button>
+      <g-signin-button
+        class="g-signin-button"
+        :params="params"
+        @success="onSuccess"
+        @error="onFailure"
+      >
+        Sign in with Google
+      </g-signin-button>
       <LoaderPlugin></LoaderPlugin>
       <SignIn></SignIn>
     </center>
@@ -48,8 +54,7 @@ export default {
   components: {
     GoogleLogin,
     LoaderPlugin,
-    SignIn,
-     
+    SignIn
   },
   data() {
     return {
@@ -63,7 +68,8 @@ export default {
         height: 50,
         longtitle: true
       },
-      result: []
+      result: [],
+      id_token: 0
     };
   },
   methods: {
@@ -87,6 +93,7 @@ export default {
       window.console.log("Email: " + profile.getEmail());
       let id_token = googleUser.getAuthResponse().id_token;
       window.console.log("ID Token: " + id_token);
+      this.id_token = id_token;
       window.console.log("Auth Response: ", googleUser.getAuthResponse());
       //window.console.log("Auth Instance: " , googleUser.getAuthInstance());
       //window.console.log("Auth Code: " , googleUser.getAuthInstance().getAuthCode());
@@ -105,6 +112,9 @@ export default {
     },
     loutFail(param) {
       window.console.log("===LOGOUT FAILED===\n", param);
+    },
+    validateToken() {
+      window.console.log("TOKEN: " + this.id_token);
     }
   }
 };
