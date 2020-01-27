@@ -6,6 +6,7 @@
       <h3>Back End</h3>
       <input v-model="id_token" />
       <p>idToken: {{ id_token }}</p>
+      <p>valid: {{ valid }}</p>
       <br />
       <button v-on:click="validateToken">Validate</button>
       <hr />
@@ -128,8 +129,10 @@ export default {
       xhr.onload = function() {
         window.console.log("HEADER: ", xhr.getAllResponseHeaders());
         window.console.log("XHR_RESPONSE:", xhr);
-        if (xhr.status == 400) this.valid = true;
-        window.console.log("Signed in as: " + xhr.responseText);
+        if (xhr.status == 400){
+          this.valid = true;
+        }
+         window.console.log("Signed in as: " + xhr.responseText);
       };
       //xhr.send("idtoken=" + this.id_token);
     }
