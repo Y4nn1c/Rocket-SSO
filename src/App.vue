@@ -124,17 +124,27 @@ export default {
       var xhr = new XMLHttpRequest();
       xhr.open(
         "GET",
-        "https://oauth2.googleapis.com/tokeninfo?idtoken=" + this.id_token
+        "https://oauth2.googleapis.com/tokeninfo?idtoken="+this.id_token
       );
       //xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       window.console.log("XHR: ", xhr);
       xhr.send();
 
-      xhr.onreadystatechange = e => {
-        window.console.log(xhr.responseText);
-        window.console.log(e);
+      xhr.onreadystatechange = (e) => {
+       window.console.log(xhr.responseText);
+       window.console.log(e);
+      }
+      /*
+      xhr.onload = function() {
+        window.console.log("HEADER: ", xhr.getAllResponseHeaders());
+        window.console.log("XHR_RESPONSE:", xhr);
+        if (xhr.status == 400) {
+          this.valid = true;
+        }
+        window.console.log("Signed in as: " + xhr.responseText);
       };
-
+      //*/
+      //xhr.send("idtoken=" + this.id_token);
     }
   }
 };
