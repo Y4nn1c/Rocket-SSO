@@ -3,10 +3,13 @@
     <img alt="Vue logo" src="./assets/logo.png" />
     <center>
       <h2>Look into the Debug Console.</h2>
+      <h3>Back End</h3>
       <input v-model="id_token" />
       <p>idToken: {{ id_token }}</p>
       <br />
-      <button v_on:click="validate Token">Validate</button>
+      <button v-on:click="validateToken">Validate</button>
+      <hr />
+      <h3>Front End</h3>
       <GoogleLogin
         :params="params"
         :renderParams="renderParams"
@@ -115,6 +118,14 @@ export default {
     },
     validateToken() {
       window.console.log("TOKEN: " + this.id_token);
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://oauth2.googleapis.com/tokeninfo?');
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.onload = function() {
+        window.console.log("XHR_RESPONSE:",  xhr);
+        window.console.log('Signed in as: ' + xhr.responseText);
+      };
+      xhr.send('idtoken=' + this.id_token);
     }
   }
 };
