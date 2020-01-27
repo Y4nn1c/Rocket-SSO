@@ -39,12 +39,12 @@
       <p>valid: {{ valid }}</p>
       <br />
       <button v-on:click="validateToken">Validate</button>
-      <br />
+      <!--<br />
       <p>
         Is the token valid? YES: Is it already in our user DB? Yes: exchange it
         for users respective Rocket Session token. No: Generate a new Rocket
         Session Token for the user and save it. No: Cant login, No valid token.
-      </p>
+      </p>-->
       <hr />
     </center>
   </div>
