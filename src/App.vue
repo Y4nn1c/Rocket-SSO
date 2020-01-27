@@ -33,8 +33,6 @@
         :onFailure="loutFail"
         >Logout</GoogleLogin
       >
-      <br /><br />
-
       <hr />
       <h3>Back End</h3>
       <input v-model="id_token" />
