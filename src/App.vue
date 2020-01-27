@@ -7,6 +7,7 @@
       <input v-model="id_token" />
       <p>idToken: {{ id_token }}</p>
       <p>valid: {{ valid }}</p>
+      <a href="https://oauth2.googleapis.com/tokeninfo?id_token=" {{id_token}} ><a/>
       <br />
       <button v-on:click="validateToken">Validate</button>
       <hr />
