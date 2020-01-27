@@ -12,6 +12,15 @@
         :onFailure="onFailure"
       ></GoogleLogin>
       <br />
+      <g-signin-button
+        class="g-signin-button"
+        :params="params"
+        @success="onSuccess"
+        @error="onFailure"
+      >
+        Sign in with Google
+      </g-signin-button>
+      <br />
       <h3>Google Profile Information</h3>
       <li v-for="attr in result" v-bind:key="attr">
         {{ attr.key }} - {{ attr.val }}
@@ -24,36 +33,28 @@
         :onFailure="loutFail"
         >Logout</GoogleLogin
       >
-      <br />
-      <g-signin-button
-        class="g-signin-button"
-        :params="params"
-        @success="onSuccess"
-        @error="onFailure"
-      >
-        Sign in with Google
-      </g-signin-button>
+      <br /><br />>
+
       <hr />
       <h3>Back End</h3>
       <input v-model="id_token" />
       <p>idToken: {{ id_token }}</p>
       <p>valid: {{ valid }}</p>
-      <br />
       <button v-on:click="validateToken">Validate</button>
+      <p>
+        Is the token valid? YES: Is it already in our user DB? Yes: exchange it
+        for users respective Rocket Session token. No: Generate a new Rocket
+        Session Token for the user and save it. No: Cant login, No valid token.
+      </p>
       <hr />
     </center>
   </div>
 </template>
 
 <script>
-//import "https://apis.google.com/js/api:client.js";
-//import HelloWorld from "./components/HelloWorld.vue";
 import { GoogleLogin } from "vue-google-login";
-//import { SignIn } from "./components/SignIn";
-//import axios from 'axios'
-//import  {GSignInButton } from "vue-google-signin-button";
 const CLIENT_ID =
-  "884184644232-3nu1245erhln6pmc0mfep4n6o9dmh0vh.apps.googleusercontent.com"; //require("../tokens.js");
+  "884184644232-3nu1245erhln6pmc0mfep4n6o9dmh0vh.apps.googleusercontent.com";
 
 export default {
   name: "app",
@@ -74,7 +75,8 @@ export default {
       },
       result: [],
       id_token: 0,
-      valid: false
+      valid: false,
+      rocket_token: 0
     };
   },
   methods: {
