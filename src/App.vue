@@ -72,7 +72,8 @@ export default {
         longtitle: true
       },
       result: [],
-      id_token: 0
+      id_token: 0,
+      valid: false
     };
   },
   methods: {
@@ -119,11 +120,13 @@ export default {
     validateToken() {
       window.console.log("TOKEN: " + this.id_token);
       var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'https://oauth2.googleapis.com/tokeninfo?');
+      xhr.open('GET', 'https://oauth2.googleapis.com/tokeninfo?idtoken=');
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       xhr.onload = function() {
         window.console.log("HEADER: ", xhr.getAllResponseHeaders());
         window.console.log("XHR_RESPONSE:",  xhr);
+        if(xhr.status == 400)
+          this.valid = true;
         window.console.log('Signed in as: ' + xhr.responseText);
       };
       xhr.send('idtoken=' + this.id_token);
