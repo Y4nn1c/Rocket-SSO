@@ -120,7 +120,7 @@ export default {
     },
     validateToken() {
       window.console.log("TOKEN: " + this.id_token);
-      var xhr = new XMLHttpRequest();
+      /*   var xhr = new XMLHttpRequest();
       xhr.open("GET", "https://oauth2.googleapis.com/tokeninfo?idtoken="+this.id_token);
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       window.console.log("XHR: ", xhr);
@@ -133,8 +133,30 @@ export default {
         window.console.log("Signed in as: " + xhr.responseText);
       };
       //xhr.send("idtoken=" + this.id_token);
+    */
+      var client = new HttpClient();
+      client.get(
+        "https:oauth2.googleapis.com/tokeninfo?idtoken=" + this.id_token,
+        function(response) {
+          // do something with response
+          window.copnsole.log("RESPONSE: ", response);
+        }
+      );
     }
   }
+};
+
+var HttpClient = function() {
+  this.get = function(aUrl, aCallback) {
+    var anHttpRequest = new XMLHttpRequest();
+    anHttpRequest.onreadystatechange = function() {
+      if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+        aCallback(anHttpRequest.responseText);
+    };
+
+    anHttpRequest.open("GET", aUrl, true);
+    anHttpRequest.send(null);
+  };
 };
 </script>
 
