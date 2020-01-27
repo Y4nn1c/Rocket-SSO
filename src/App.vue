@@ -125,7 +125,7 @@ export default {
       var xhr = new XMLHttpRequest();
       xhr.open(
         "GET",
-        "https://oauth2.googleapis.com/tokeninfo?idtoken="+this.id_token
+        "https://oauth2.googleapis.com/tokeninfo?id_token="+this.id_token
       );
       //xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       window.console.log("XHR: ", xhr);
